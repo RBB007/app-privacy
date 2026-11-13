@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light dark" />
+  <title>RoomSnap Privacy Policy</title>
+  <style>
+    :root { --fg: #1b1b1f; --muted: #5d5d66; --bg: #ffffff; --rule: #e3e3e8; --accent: #c8102e; }
+    @media (prefers-color-scheme: dark) {
+      :root { --fg: #ececf1; --muted: #a2a2ad; --bg: #141418; --rule: #2a2a31; }
+    }
+    body { margin: 0; background: var(--bg); color: var(--fg);
+      font: 17px/1.55 "Titillium Web", -apple-system, system-ui, sans-serif; }
+    main { max-width: 720px; margin: 0 auto; padding: 48px 20px 80px; }
+    h1 { font-size: 2rem; margin: 0 0 4px; }
+    h2 { font-size: 1.2rem; margin: 36px 0 8px; padding-top: 16px; border-top: 1px solid var(--rule); }
+    p, li { color: var(--fg); }
+    .meta { color: var(--muted); margin-bottom: 32px; }
+    a { color: var(--accent); }
+    table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+    th { color: var(--muted); font-weight: 600; }
+  </style>
+</head>
+<body>
+<main>
+  <h1>RoomSnap Privacy Policy</h1>
+  <p class="meta">Effective 13 November 2026 · Applies to the RoomSnap iOS app and its companion web app</p>
+
+  <p>RoomSnap scans a room with your iPhone or iPad's LiDAR sensor and turns the scan into a floor plan.
+  It is built by Bailey Bond for Pivot Engineers and its invited partners. This page explains what the
+  app does with your data. The short version: everything stays on your device unless you choose to sign
+  in, and we never sell data or show ads.</p>
+
+  <h2>What the app does on your device</h2>
+  <p>Scanning uses the camera and LiDAR sensor through Apple's RoomPlan framework. The camera feed, depth
+  data and the photos used to texture the 3D view are processed on the device. Scans, floor plans,
+  3D models, project names and your unit preference are stored in the app's own storage on the device.
+  They are not sent anywhere unless you sign in to cloud sync, export a file, or share one.</p>
+  <p>The app has no analytics, no advertising, no tracking, and does not read your contacts, location,
+  photo library or anything outside the scans you make in it.</p>
+
+  <h2>Access code</h2>
+  <p>The first screen asks for an access code. The app checks the code against a stored fingerprint on
+  the device. The code and the result are not sent to us.</p>
+
+  <h2>Cloud sync (optional, only when you sign in)</h2>
+  <p>Some builds of the app offer an Account button. If you sign in with a Google account, the app
+  uploads your scans to a Firebase project operated by Pivot Engineers on Google Cloud so that the web
+  app can show and convert them. When signed in, we store:</p>
+  <table>
+    <tr><th>Data</th><th>Why</th></tr>
+    <tr><td>Your Google account email, display name and account identifier</td><td>To identify your account and keep your scans separate from other people's</td></tr>
+    <tr><td>Scans you save: floor plan data, the 3D scan, thumbnails, rendered PNG and PDF plans, the photo-textured mesh and its textures, project names and room placements</td><td>To show them in the web app and produce file conversions you request</td></tr>
+    <tr><td>Your unit preference (feet and inches or metric)</td><td>To display plans the way you set them</td></tr>
+  </table>
+  <p>Photos used to texture the 3D view can show the inside of the room you scanned. Only you can read
+  your own scans: Firebase security rules limit every account to its own documents and files. Pivot
+  Engineers staff with administrative access to the Firebase project can also access stored data for
+  support and maintenance.</p>
+  <p>Sign-in uses Google Sign-In and Firebase Authentication. Google's handling of the sign-in itself is
+  covered by <a href="https://policies.google.com/privacy">Google's privacy policy</a>.</p>
+  <p>Sync is upload-only: the phone remains the master copy. Deleting a scan or project in the app
+  deletes the cloud copy too. Signing out stops uploads; data already uploaded stays until you delete it
+  or ask us to.</p>
+
+  <h2>Exports and sharing</h2>
+  <p>When you export or share a plan, USDZ model or other file, it goes where you send it (Files, Mail,
+  AirDrop, another app). That transfer is under your control and the receiving app's policy.</p>
+
+  <h2>Where data is stored and for how long</h2>
+  <p>On-device data stays until you delete the scan, the project or the app. Cloud data is stored in
+  Google Cloud data centres in the United States and kept until you delete it or request deletion.</p>
+
+  <h2>Children</h2>
+  <p>RoomSnap is a professional tool and is not directed at children under 13. We do not knowingly
+  collect data from them.</p>
+
+  <h2>Your choices and requests</h2>
+  <ul>
+    <li>Use the app without signing in and no data leaves the device.</li>
+    <li>Delete scans or projects in the app to remove them locally and from the cloud.</li>
+    <li>Contact us to have your account and all cloud data deleted, or to ask what we hold about you.</li>
+  </ul>
+
+  <h2>Changes</h2>
+  <p>If this policy changes, the new version is posted at this address with a new effective date.</p>
+
+  <h2>Contact</h2>
+  <p>Bailey Bond, developer of RoomSnap. Use the App Support link on RoomSnap's App Store page to reach us.</p>
+</main>
+</body>
+</html>
