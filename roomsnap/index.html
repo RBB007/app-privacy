@@ -3,28 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="color-scheme" content="light dark" />
   <title>RoomSnap Privacy Policy</title>
-  <style>
-    :root { --fg: #1b1b1f; --muted: #5d5d66; --bg: #ffffff; --rule: #e3e3e8; --accent: #c8102e; }
-    @media (prefers-color-scheme: dark) {
-      :root { --fg: #ececf1; --muted: #a2a2ad; --bg: #141418; --rule: #2a2a31; }
-    }
-    body { margin: 0; background: var(--bg); color: var(--fg);
-      font: 17px/1.55 "Titillium Web", -apple-system, system-ui, sans-serif; }
-    main { max-width: 720px; margin: 0 auto; padding: 48px 20px 80px; }
-    h1 { font-size: 2rem; margin: 0 0 4px; }
-    h2 { font-size: 1.2rem; margin: 36px 0 8px; padding-top: 16px; border-top: 1px solid var(--rule); }
-    p, li { color: var(--fg); }
-    .meta { color: var(--muted); margin-bottom: 32px; }
-    a { color: var(--accent); }
-    table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
-    th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
-    th { color: var(--muted); font-weight: 600; }
-  </style>
+  <link rel="stylesheet" href="../assets/pivot-base.css" />
+  <link rel="stylesheet" href="../assets/policy.css" />
 </head>
 <body>
-<main>
+<header class="top">
+  <div class="wrap top-inner">
+    <a class="brand" href="../"><span class="brand-text">App support and privacy</span></a>
+  </div>
+</header>
+<main class="doc">
   <h1>RoomSnap Privacy Policy</h1>
   <p class="meta">Effective 13 November 2026 · Applies to the RoomSnap iOS app and its companion web app</p>
 
@@ -49,12 +38,12 @@
   <p>Some builds of the app offer an Account button. If you sign in with a Google account, the app
   uploads your scans to a Firebase project operated by Pivot Engineers on Google Cloud so that the web
   app can show and convert them. When signed in, we store:</p>
-  <table>
+  <div class="table-scroll"><table>
     <tr><th>Data</th><th>Why</th></tr>
     <tr><td>Your Google account email, display name and account identifier</td><td>To identify your account and keep your scans separate from other people's</td></tr>
     <tr><td>Scans you save: floor plan data, the 3D scan, thumbnails, rendered PNG and PDF plans, the photo-textured mesh and its textures, project names and room placements</td><td>To show them in the web app and produce file conversions you request</td></tr>
     <tr><td>Your unit preference (feet and inches or metric)</td><td>To display plans the way you set them</td></tr>
-  </table>
+  </table></div>
   <p>Photos used to texture the 3D view can show the inside of the room you scanned. Only you can read
   your own scans: Firebase security rules limit every account to its own documents and files. Pivot
   Engineers staff with administrative access to the Firebase project can also access stored data for

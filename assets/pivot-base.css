@@ -1,0 +1,149 @@
+/* Pivot tools: shared tokens and base components.
+   Source of truth for the look of every Pivot in-house web app. The hub
+   (pivot-hub/site/styles.css) is the reference implementation; this file is the
+   portable subset. Copy it into a project as-is, then add app-specific rules in a
+   second file. Do not rename or re-value tokens per app.
+
+   Font files live next to this file in fonts/. Adjust the three url() paths to
+   wherever the project serves them from. */
+
+@font-face { font-family: "Titillium Web"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/titillium-400.woff2") format("woff2"); }
+@font-face { font-family: "Titillium Web"; font-style: normal; font-weight: 600; font-display: swap; src: url("fonts/titillium-600.woff2") format("woff2"); }
+@font-face { font-family: "Titillium Web"; font-style: normal; font-weight: 700; font-display: swap; src: url("fonts/titillium-700.woff2") format("woff2"); }
+
+:root {
+  /* warm neutrals */
+  --bg: #faf7f2;          /* page */
+  --bg-2: #f3eee6;        /* wells, table heads, hover fills */
+  --panel: #fffdf9;       /* cards, inputs */
+  --line: #e9e1d6;        /* hairlines */
+  --line-2: #d9cfc0;      /* stronger borders, dividers */
+  --ink: #221c17;         /* text */
+  --ink-2: #4a4038;       /* secondary text */
+  --muted: #74675a;       /* captions, labels (4.9:1 on --bg) */
+  /* brand */
+  --orange: #e8500f;      /* primary action fill, accents */
+  --orange-deep: #c43f08; /* links, hover, text-on-light */
+  --amber: #ffb400;       /* highlight only, never text */
+  --orange-tint: #fdeee5; /* tinted wells, row hover */
+  /* status */
+  --s-live: #5d6b2a;  --s-live-bg: #eef0dc;
+  --s-warn: #9a5a0a;  --s-warn-bg: #fdf1dc;
+  --s-int: #8a3b1b;   --s-int-bg: #f9e6dd;
+  --s-off: #74675a;   --s-off-bg: #efeae2;
+  --danger: #a3301a;  --danger-bg: #fbeee9;  --danger-line: #e8c3b6;
+  /* shape */
+  --radius: 14px;         /* cards, panels */
+  --radius-lg: 22px;      /* hero, sign-in card, feature bands */
+  --radius-sm: 10px;      /* inputs, wells */
+  --shadow: 0 1px 2px rgba(60, 40, 20, .05), 0 8px 24px -12px rgba(60, 40, 20, .18);
+  --shadow-hover: 0 2px 4px rgba(60, 40, 20, .06), 0 16px 32px -14px rgba(60, 40, 20, .28);
+  --font: "Titillium Web", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+html { scroll-padding-top: 80px; }
+body {
+  margin: 0;
+  font: 17px/1.55 var(--font);
+  color: var(--ink);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--orange-deep); }
+h1, h2, h3 { margin: 0 0 .4rem; line-height: 1.15; }
+h1 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); font-weight: 700; letter-spacing: -.01em; }
+h2 { font-size: .95rem; text-transform: uppercase; letter-spacing: .22em; font-weight: 700; color: var(--ink-2); }
+h3 { font-size: 1.25rem; font-weight: 700; }
+p { margin: 0 0 .75rem; }
+button, input, select, textarea { font: inherit; color: inherit; }
+[hidden] { display: none !important; }
+:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; border-radius: 4px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.subtle { color: var(--muted); }
+.small { font-size: .9rem; }
+.mono { font-family: var(--mono); font-size: .92em; }
+
+/* header: logo, divider, app name, then the signed-in pill on the right */
+.top { position: sticky; top: 0; z-index: 10; background: rgba(250, 247, 242, .85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+.top-inner { display: flex; align-items: center; gap: 24px; height: 68px; }
+.brand { display: inline-flex; align-items: center; gap: 14px; color: var(--ink); text-decoration: none; }
+.brand img { height: 38px; width: auto; display: block; }
+.brand-divider { width: 1px; height: 26px; background: var(--line-2); }
+.brand-text { font-size: 14px; text-transform: uppercase; letter-spacing: .22em; color: var(--muted); font-weight: 600; white-space: nowrap; }
+.top-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+.who { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); white-space: nowrap; padding: 4px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--panel); }
+
+/* buttons: pill, orange primary; one primary per view */
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; background: var(--orange); color: #fff; text-decoration: none; font-weight: 700;
+  font-size: .9rem; padding: 8px 16px; border: 1.5px solid transparent; border-radius: 999px; white-space: nowrap; letter-spacing: .01em; cursor: pointer;
+  transition: background .15s ease, transform .15s ease, border-color .15s ease;
+}
+.btn:hover { background: var(--orange-deep); transform: translateY(-1px); text-decoration: none; }
+.btn.secondary { background: transparent; color: var(--ink); border-color: var(--line-2); }
+.btn.secondary:hover { background: var(--panel); border-color: var(--ink); }
+.btn.ghost { background: transparent; color: var(--ink-2); }
+.btn.ghost:hover { background: var(--bg-2); color: var(--ink); transform: none; }
+.btn.small { padding: 5px 12px; font-size: 13px; }
+/* last, so it wins over the variants above */
+.btn:disabled, .btn.disabled, .btn.secondary:disabled, .btn.secondary.disabled, .btn.ghost:disabled, .btn.ghost.disabled { background: var(--bg-2); color: var(--muted); border-color: transparent; pointer-events: none; cursor: default; transform: none; }
+
+/* surfaces */
+.card, .panel { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+.card { padding: 22px 24px 20px; }
+.card.lift { transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease; }
+.card.lift:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); border-color: var(--line-2); }
+.well { background: var(--bg-2); border-radius: var(--radius-sm); padding: 10px 12px; }
+.kind { font-size: 11.5px; text-transform: uppercase; letter-spacing: .14em; color: var(--muted); font-weight: 700; }
+
+/* status pills */
+.status { display: inline-block; font-size: 12px; font-weight: 700; padding: 3px 11px; border-radius: 999px; letter-spacing: .02em; }
+.status[data-s="live"], .status[data-s="pilot"], .status[data-s="ok"] { color: var(--s-live); background: var(--s-live-bg); }
+.status[data-s="review"], .status[data-s="building"], .status[data-s="warn"] { color: var(--s-warn); background: var(--s-warn-bg); }
+.status[data-s="internal"] { color: var(--s-int); background: var(--s-int-bg); }
+.status[data-s="parked"], .status[data-s="off"] { color: var(--s-off); background: var(--s-off-bg); }
+
+/* notices */
+.notice { padding: 14px 18px; border-radius: var(--radius); background: var(--panel); color: var(--ink-2); border: 1px solid var(--line); }
+.notice.error { color: var(--danger); border-color: var(--danger-line); background: var(--danger-bg); }
+
+/* form fields */
+label.field, .field > label { display: block; font-size: 11.5px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); font-weight: 700; margin-bottom: 4px; }
+input[type="text"], input[type="email"], input[type="search"], input[type="number"], select, textarea {
+  width: 100%; padding: 9px 12px; background: var(--panel); border: 1.5px solid var(--line-2); border-radius: var(--radius-sm);
+}
+input:focus, select:focus, textarea:focus { outline: none; border-color: var(--orange); box-shadow: 0 0 0 3px var(--orange-tint); }
+
+/* tables */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); box-shadow: var(--shadow); }
+table.data { width: 100%; border-collapse: collapse; font-size: .95rem; }
+table.data th, table.data td { padding: 10px 14px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+table.data th { font-size: 11.5px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); font-weight: 700; background: var(--bg-2); }
+table.data tbody tr:last-child td { border-bottom: 0; }
+table.data tbody tr:hover td { background: var(--orange-tint); }
+
+/* progress and spinner */
+.progress { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; }
+.progress > div { height: 100%; width: 0; background: var(--orange); transition: width .6s; }
+.spinner { width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--line-2); border-top-color: var(--orange); animation: pivot-spin .8s linear infinite; flex: none; }
+@keyframes pivot-spin { to { transform: rotate(360deg); } }
+
+/* sign-in screen */
+.signin { min-height: 100vh; display: grid; place-items: center; padding: 24px; background: linear-gradient(160deg, var(--bg) 40%, var(--orange-tint)); }
+.signin-card { width: min(440px, 100%); padding: 40px 36px; border: 1px solid var(--line); border-radius: var(--radius-lg); background: var(--panel); box-shadow: var(--shadow); text-align: center; display: grid; gap: 20px; justify-items: center; }
+.signin-card img { height: 48px; width: auto; }
+
+/* footer */
+.foot { border-top: 1px solid var(--line); margin-top: 24px; padding: 24px 0 40px; color: var(--muted); font-size: .85rem; }
+
+@media (max-width: 760px) {
+  .wrap { padding: 0 16px; }
+  .top-inner { gap: 12px; }
+  .brand-text, .brand-divider { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation-duration: .01ms !important; }
+}
